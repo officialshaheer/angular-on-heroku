@@ -11,7 +11,7 @@ export class SocketServiceService {
   // readonly uri: string = "ws://localhost:3000";
 
   constructor() { 
-    this.socket = io('ws://localhost:3000');
+    this.socket = io('ws://localhost:3000', { transports : ['websocket'] });
   }
 
   listen(eventName: string) {
