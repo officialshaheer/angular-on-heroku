@@ -12,6 +12,8 @@ export class SocketServiceService {
 
   constructor() { 
     this.socket = io('ws://localhost:3000', { transports : ['websocket'] });
+    this.socket = io('ws://clubhouse-playlist.herokuapp.com/socket.io/?EIO=4&transport=websocket');
+    
   }
 
   listen(eventName: string) {
