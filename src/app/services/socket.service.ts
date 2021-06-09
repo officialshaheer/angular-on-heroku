@@ -11,8 +11,8 @@ export class SocketServiceService {
   // readonly uri: string = "ws://localhost:3000";
 
   constructor() { 
-    this.socket = io('ws://127.0.0.1:3000', { transports : ['websocket'] });
-    // this.socket = io('ws://clubhouse-playlist.herokuapp.com/socket.io/?EIO=4&transport=websocket');
+    // this.socket = io('ws://127.0.0.1:3000', { transports : ['websocket'] });
+    this.socket = io('ws://clubhouse-playlist.herokuapp.com/socket.io/?EIO=4&transport=websocket', { transports : ['websocket'] } );
     
   }
 
