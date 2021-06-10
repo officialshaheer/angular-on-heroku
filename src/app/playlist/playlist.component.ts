@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { SocketServiceService } from '../services/socket.service';
+import * as THREE from 'three';
 
 @Component({
   selector: 'app-playlist',
@@ -8,28 +9,53 @@ import { SocketServiceService } from '../services/socket.service';
 })
 export class PlaylistComponent implements OnInit {
 
+  allTracksInitialLoad: any;
+
   trackName: any;
-  streamedTracks: any = [];
+
+  liveTrack: any = 'Not Available';
 
   constructor(private socketService: SocketServiceService) { }
 
   ngOnInit(): void {
 
-    this.socketService.listen('recievingTrackFromUser').subscribe((data: any) => {
-      // console.log(data);
-      data.forEach((element: any) => {
-        this.streamedTracks.push(element)
+      this.socketService.listen('initialBroadcastAllTracks').subscribe((allTracks) => {
+          this.allTracksInitialLoad = [];
+          this.allTracksInitialLoad = allTracks;
+          if (this.allTracksInitialLoad) {
+            this.liveTrack = this.allTracksInitialLoad[this.allTracksInitialLoad.length-1];
+          }
+          // console.log(this.allTracksInitialLoad);
+          
+        });
+
+      this.socketService.listen('initialLoadAllTracks').subscribe((allTracksToMe) => {
+        this.allTracksInitialLoad = [];
+        this.allTracksInitialLoad = allTracksToMe;
+        if (this.allTracksInitialLoad) {
+          this.liveTrack = this.allTracksInitialLoad[this.allTracksInitialLoad.length-1];
+        }
+        // console.log(this.allTracksInitialLoad);
+        
       });
-      
-      console.log(this.streamedTracks);
-      
-    });
+
+      this.socketService.listen('sendToMe').subscribe((allTracksSentBackToMe) => {
+        this.allTracksInitialLoad = [];
+        this.allTracksInitialLoad = allTracksSentBackToMe;
+        if (this.allTracksInitialLoad) {
+          this.liveTrack = this.allTracksInitialLoad[this.allTracksInitialLoad.length-1];
+        }
+        // console.log(this.allTracksInitialLoad);
+        
+      });      
 
   }
 
   submitTrackToList() {
-    this.socketService.emit('sendTrack',this.trackName);
-    
+
+    if (this.trackName) {
+      this.socketService.emit('sendTrack',this.trackName);
+    }
   }
 
 }

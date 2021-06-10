@@ -9,22 +9,27 @@ app.get('/*', function(req,res) {
   res.sendFile(path.join(__dirname+
     '/dist/angular-on-heroku/index.html'));});
 
-let pageHits = 0;
 const tracks = [];
 
 io.on('connection', function (socket) {
     console.log('A user connected');
-    pageHits++
-    socket.emit('test event',pageHits);
 
-    socket.broadcast.emit('trackName',pageHits);
+    //Send server tracks to user
+    io.emit('initialLoadAllTracks',tracks);
+
+    //Send an updated copy of server tracks when a new user joins
+    socket.broadcast.emit('initialBroadcastAllTracks',tracks);
 
     
     socket.on('sendTrack',(data) => {
 
         tracks.push(data);
 
-        socket.broadcast.emit('recievingTrackFromUser',tracks);
+        //Send updated tracks to myself
+        io.emit('sendToMe',tracks);
+
+        //Send updated tracks to all clients
+        socket.broadcast.emit('allTracks',tracks);
         // io.emit('sendtoall', pageHits);
     })
 

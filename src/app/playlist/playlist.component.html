@@ -1,46 +1,23 @@
-<h1>Suggested Track</h1>
-<div class="table-wrapper">
-    <table class="fl-table">
-        <thead>
-        <tr>
-            <th>Track Name</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>{{trackName}}</td>
-        </tr>
-        <tbody>
-    </table>
-</div>
+<div class="content">
+    <div class="section1">
+        <h3 style="padding-left: 5px;padding-right: 5px;">Suggested Track</h3>
+        <div>
+        <h2>{{liveTrack}}</h2>
+        </div>
+    </div>
 
-<div class="table-wrapper2" style="padding-top: 80px;">
-    
-    <div class="form__group" style="padding-bottom: 20px;">
-        <input type="text" (keyup.enter)="submitTrackToList()" [(ngModel)]="trackName" class="form__input" id="songname" placeholder="ENTER SONG NAME" required="" />
+    <div class="section2">
+        <h1>Shoot your track here</h1>
+        <input type="text" [(ngModel)]="trackName" class="form__input" id="songname" placeholder="Enter song name" required="" />
+        <button class="button" (click)="submitTrackToList()">Send</button>
+        <!-- <div id="canvas-container">
+        </div> -->
     </div>
-    </div>
-    
-    <div class="table-wrapper">
-    <div class="buttonContainer">
-    <button class="button" (click)="submitTrackToList()">Send</button>
-    </div>
-</div>
 
-<h1>Streamed Tracks</h1>
-<div class="table-wrapper" style="padding-top: 40px;">
-    <table class="fl-table">
-        <thead>
-        <tr>
-            <th>Track Name</th>
-            <th>Added Time</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let track of streamedTracks">
-            <td>{{track}}</td>
-            <td></td>
-        </tr>
-        <tbody>
-    </table>
+    <div class="section3">
+        <h3 style="padding-left: 5px;padding-right: 5px;">Streamed Tracks</h3>
+            <div *ngFor="let track of allTracksInitialLoad">
+                <h2 style="margin: 0;">{{track}}</h2>
+            </div>
+    </div>
 </div>
