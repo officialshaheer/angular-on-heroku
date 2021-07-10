@@ -46,6 +46,7 @@ export class PlaylistComponent implements OnInit {
         this.broadcastingOrientationValues = data;
         console.log('recieved alpha: ',this.broadcastingOrientationValues.alpha);
         
+        
         // playJoiningSound();
       })
 
