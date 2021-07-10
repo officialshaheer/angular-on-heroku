@@ -15,9 +15,37 @@ export class PlaylistComponent implements OnInit {
 
   liveTrack: any = 'Not Available';
 
+  orientationValues: any = [];
+  broadcastingOrientationValues: any = [];
+
   constructor(private socketService: SocketServiceService) { }
 
   ngOnInit(): void {
+
+
+      // Device orientation
+      if (window.DeviceOrientationEvent) {
+        // alert('Orientation Supported');
+        window.addEventListener('deviceorientation', (eventData) => {
+          console.log(eventData);
+          
+          this.orientationValues = {
+            alpha: eventData.alpha,
+            beta: eventData.beta,
+            gamma: eventData.gamma
+          }
+
+          // Sending out my existense to server
+          this.socketService.emit('sendOrientationData',this.orientationValues);
+
+        })
+      } else { alert('Not supported') }
+
+      // Server sending back all the user existence
+      this.socketService.listen('sendOrientationDataToAll').subscribe((data) => {
+        this.broadcastingOrientationValues = data;
+        // playJoiningSound();
+      })
 
       this.socketService.listen('initialBroadcastAllTracks').subscribe((allTracks) => {
           this.allTracksInitialLoad = [];
