@@ -15,7 +15,7 @@ io.on('connection', function (socket) {
     console.log('A user connected');
 
     socket.on('sendOrientationData',(data) => {
-      console.log(data); 
+      console.log(data);
       io.emit('sendOrientationDataToAll', data);
     })
 

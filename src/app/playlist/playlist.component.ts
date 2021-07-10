@@ -44,6 +44,8 @@ export class PlaylistComponent implements OnInit {
       // Server sending back all the user existence
       this.socketService.listen('sendOrientationDataToAll').subscribe((data) => {
         this.broadcastingOrientationValues = data;
+        console.log(this.broadcastingOrientationValues);
+        
         // playJoiningSound();
       })
 
