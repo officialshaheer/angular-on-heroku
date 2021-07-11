@@ -24,7 +24,7 @@ export class PortfolioComponent implements OnInit {
 
   orientationValues: any = [];
 
-  broadcastingOrientationValues: any = {alpha: 0,beta:3};
+  broadcastingOrientationValues: any = {alpha: 0,beta:3, gamma: 4};
 
   constructor(private socketService: SocketServiceService) { }
 
@@ -433,6 +433,7 @@ export class PortfolioComponent implements OnInit {
         
         this.camera.position.x = this.broadcastingOrientationValues.alpha;
         this.camera.position.y = this.broadcastingOrientationValues.beta;
+        this.camera.position.z = this.broadcastingOrientationValues.gamma;
         // console.log(this.broadcastingOrientationValues.alpha);
         
         // this.camera.position.y = this.broadcastingOrientationValues.beta;
