@@ -431,9 +431,12 @@ export class PortfolioComponent implements OnInit {
 
       if (this.broadcastingOrientationValues){
         
-        this.camera.position.x = this.broadcastingOrientationValues.alpha;
-        this.camera.position.y = this.broadcastingOrientationValues.beta;
-        this.camera.position.z = this.broadcastingOrientationValues.gamma;
+        // this.camera.position.x = this.broadcastingOrientationValues.alpha;
+        // this.camera.position.y = this.broadcastingOrientationValues.beta;
+        // this.camera.position.z = this.broadcastingOrientationValues.gamma;
+
+        playerMesh.position.x = this.broadcastingOrientationValues.alpha;
+        playerMesh.position.y = this.broadcastingOrientationValues.gamma;
         // console.log(this.broadcastingOrientationValues.alpha);
         
         // this.camera.position.y = this.broadcastingOrientationValues.beta;
