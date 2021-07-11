@@ -380,6 +380,8 @@ export class PortfolioComponent implements OnInit {
     // this.camera.lookAt(new THREE.Vector3(0,0,0));
     scene.add(this.camera)
 
+    // this.camera.position.x = 170 * 0.01;
+
     //Controls
     const controls = new OrbitControls(this.camera, canvas )
     controls.enableDamping = true;
@@ -406,7 +408,7 @@ export class PortfolioComponent implements OnInit {
     // Clock
     let clock = new THREE.Clock()
     let oldELapsedTime = 0
-    const pi = Math.PI;
+    // const pi = Math.PI;
 
     //Animate
     const tick = () => {
@@ -428,9 +430,9 @@ export class PortfolioComponent implements OnInit {
       sphere.rotation.z = sphereBody.quaternion.z
 
       if (this.broadcastingOrientationValues){
-        this.camera.rotation.x = this.broadcastingOrientationValues.alpha * (pi/180);
-        this.camera.rotation.y = this.broadcastingOrientationValues.beta * (pi/180);
-        this.camera.rotation.z = this.broadcastingOrientationValues.gamma * (pi/180);
+        this.camera.position.x = this.broadcastingOrientationValues.alpha * 0.01;
+        // this.camera.position.y = this.broadcastingOrientationValues.beta * (pi/180);
+        // this.camera.position.z = this.broadcastingOrientationValues.gamma * (pi/180);
       }
       
 
