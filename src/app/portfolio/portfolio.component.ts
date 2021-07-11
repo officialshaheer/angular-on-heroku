@@ -374,8 +374,8 @@ export class PortfolioComponent implements OnInit {
     //Camera Initialisation
     this.camera = new THREE.PerspectiveCamera(75,  sizes.width / sizes.height, 0.1, 10000)
     this.camera.position.x = 10
-    this.camera.position.y = 5
-    this.camera.position.z = 5
+    this.camera.position.y = 50
+    this.camera.position.z = 150
 
     // this.camera.lookAt(new THREE.Vector3(0,0,0));
     scene.add(this.camera)
