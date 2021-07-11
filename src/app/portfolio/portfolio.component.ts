@@ -24,7 +24,7 @@ export class PortfolioComponent implements OnInit {
 
   orientationValues: any = [];
 
-  broadcastingOrientationValues: any = [];
+  broadcastingOrientationValues: any = {alpha: 0,beta:3};
 
   constructor(private socketService: SocketServiceService) { }
 
@@ -430,8 +430,12 @@ export class PortfolioComponent implements OnInit {
       sphere.rotation.z = sphereBody.quaternion.z
 
       if (this.broadcastingOrientationValues){
+        
         this.camera.position.x = this.broadcastingOrientationValues.alpha;
         this.camera.position.y = this.broadcastingOrientationValues.beta;
+        // console.log(this.broadcastingOrientationValues.alpha);
+        
+        // this.camera.position.y = this.broadcastingOrientationValues.beta;
         // this.camera.position.y = this.broadcastingOrientationValues.beta * (pi/180);
         // this.camera.position.z = this.broadcastingOrientationValues.gamma * (pi/180);
       }
