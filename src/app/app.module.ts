@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PlaylistComponent } from './playlist/playlist.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,
