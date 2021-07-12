@@ -233,6 +233,7 @@ export class PortfolioComponent implements OnInit {
     })
     const playerMesh = new THREE.Mesh(playerGeometry,playerMaterial)
     playerMesh.position.y = .26
+    playerMesh.scale.set(15,15,15)
     playerMesh.castShadow = true
     scene.add(playerMesh)
 
