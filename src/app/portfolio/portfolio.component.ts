@@ -439,6 +439,8 @@ export class PortfolioComponent implements OnInit {
 
         playerMesh.position.x = this.broadcastingOrientationValues.alpha;
         playerMesh.position.y = this.broadcastingOrientationValues.beta;
+        playerBody.position.x = playerMesh.position.x;
+        playerBody.position.y = playerMesh.position.y;
         // console.log(this.broadcastingOrientationValues.alpha);
         
         // this.camera.position.y = this.broadcastingOrientationValues.beta;
