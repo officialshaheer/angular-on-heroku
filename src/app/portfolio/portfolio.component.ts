@@ -149,6 +149,7 @@ export class PortfolioComponent implements OnInit {
           }
           
           scene.add(gltf.scene)
+          gltf.scene.scale.set(15,15,15)
           gltf.scene.receiveShadow = true
           this.models.push(gltf.scene)
       }
@@ -192,7 +193,7 @@ export class PortfolioComponent implements OnInit {
     )
 
     //Physic Sphere
-    const sphereShape = new CANNON.Sphere(0.15)
+    const sphereShape = new CANNON.Sphere(0.15 * 15)
     const sphereBody = new CANNON.Body({
         mass: 1,
         position: new CANNON.Vec3(0,0,0),
@@ -225,6 +226,7 @@ export class PortfolioComponent implements OnInit {
     sphere.castShadow = true
     sphere.position.y = 0.5
     scene.add(sphere)
+    sphere.scale.set(15,15,15)
 
     //Three Player Box 
     const playerGeometry = new THREE.BoxBufferGeometry(.5,.5,.5)
@@ -233,13 +235,12 @@ export class PortfolioComponent implements OnInit {
     })
     const playerMesh = new THREE.Mesh(playerGeometry,playerMaterial)
     playerMesh.position.y = .26
-    playerMesh.scale.set(15,15,15)
     playerMesh.castShadow = true
     scene.add(playerMesh)
-
+    playerMesh.scale.set(15,15,15)
 
     // Cannon.js Player Box
-    const playerShape = new CANNON.Box(new CANNON.Vec3( 0.5 / 2, 0.5 / 2, 0.5 / 2 ))
+    const playerShape = new CANNON.Box(new CANNON.Vec3( 0.5 / 2 * 15, 0.5 / 2 * 15, 0.5 / 2 * 15))
     const playerBody = new CANNON.Body({
         mass: 1,
         position: new CANNON.Vec3(0, 0, 0),
@@ -276,7 +277,7 @@ export class PortfolioComponent implements OnInit {
         material: concreteMaterial
     })
     // walls1Body.addEventListener("collide", playWallSound)
-    world.addBody(walls1Body)
+    // world.addBody(walls1Body)
 
     //2
     const wall2Mesh = new THREE.Mesh(wallGeometry, wallMaterial)
@@ -295,7 +296,7 @@ export class PortfolioComponent implements OnInit {
         material: concreteMaterial
     })
     // walls2Body.addEventListener("collide", playWallSound)
-    world.addBody(walls2Body)
+    // world.addBody(walls2Body)
 
     //3
 
@@ -328,7 +329,7 @@ export class PortfolioComponent implements OnInit {
         Math.PI * 0.5
     )
     // walls3Body.addEventListener("collide", playWallSound)
-    world.addBody(walls3Body)
+    // world.addBody(walls3Body)
 
     //three
     const wall4Mesh = new THREE.Mesh(wall2Geometry, wall2Material)
@@ -353,7 +354,7 @@ export class PortfolioComponent implements OnInit {
         Math.PI * 0.5
     )
     // walls4Body.addEventListener("collide", playWallSound)
-    world.addBody(walls4Body)
+    // world.addBody(walls4Body)
 
 
     //Renderer Size
