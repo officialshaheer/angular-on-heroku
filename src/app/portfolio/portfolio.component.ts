@@ -410,7 +410,9 @@ export class PortfolioComponent implements OnInit {
     // Clock
     let clock = new THREE.Clock()
     let oldELapsedTime = 0
-    // const pi = Math.PI;
+
+    var rotSpeed = .001
+
 
     //Animate
     const tick = () => {
@@ -447,11 +449,6 @@ export class PortfolioComponent implements OnInit {
         // this.camera.position.y = this.broadcastingOrientationValues.beta * (pi/180);
         // this.camera.position.z = this.broadcastingOrientationValues.gamma * (pi/180);
       }
-      
-
-      // this.camera.position.x = sphereBody.position.x
-      // this.camera.position.y = sphereBody.position.y
-      // this.camera.position.z = sphereBody.position.z
 
       // Keyboard movement inputs
       if(this.keyboard[38] || this.keyboard[87]){ // W key
